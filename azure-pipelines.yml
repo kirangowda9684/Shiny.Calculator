@@ -32,13 +32,8 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
-- task: DownloadPipelineArtifact@2
+- task: PublishBuildArtifacts@1
   inputs:
-    source: 'specific'
-    artifact: 'drop'
-    path: $(Build.SourcesDirectory)/bin
-    project: 'AndroidBuild'
-    pipeline: 12
-    runVersion: 'specific'
-    runId: $(buildid)
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
