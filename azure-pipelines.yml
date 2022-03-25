@@ -37,3 +37,6 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+    targetPath: # Required when publishLocation == FilePath
+    parallel: false # Optional
+    storeAsTar: false # Optional
