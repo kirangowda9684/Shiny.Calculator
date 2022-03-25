@@ -40,3 +40,22 @@ steps:
   displayName: 'Publish Artifact: drop'
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
+- task: Docker@1      
+  inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub'
+        command: 'Build an image'
+        dockerFile: '**/CustomerApi/CustomerApi/Dockerfile'
+        imageName: '$(ImageName)'
+        useDefaultContext: false
+        buildContext: 'CustomerApi'
+  displayName: 'Build the Docker image'
+
+- task: Docker@1      
+  inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'Docker Hub'
+        command: 'Push an image'
+        imageName: '$(ImageName)'
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+  displayName: 'Push the Docker image to Dockerhub'
