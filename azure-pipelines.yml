@@ -42,7 +42,7 @@ steps:
     PathtoPublish: '$(build.artifactstagingdirectory)'
 - task: Docker@2
   inputs:
-    containerRegistry: 'docker connection'
+    containerRegistry: 'Docker Hub'
     repository: 'kirangowda9684 / firstrepo'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
