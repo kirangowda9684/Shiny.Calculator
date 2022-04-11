@@ -45,7 +45,7 @@ steps:
         containerregistrytype: 'Container Registry'
         dockerRegistryEndpoint: 'Docker Hub'
         command: 'Build an image'
-        dockerFile: C:\Users\kiran_k\Desktop\DockerFiles
+        dockerFile: '**/Dockerfile'
         imageName: '$myfirstimage'
         useDefaultContext: false
         buildContext: 'CustomerApi'
